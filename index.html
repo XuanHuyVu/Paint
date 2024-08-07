@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drawing App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.2-web/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="toolbox">
+            <input type="number" id="size" value="10" min="1" max="50" class="form-control" />
+            <input type="color" id="color" class="form-control" style="border: none;" />
+            <button class="btn btn-primary" id="erase"><i class="fa-solid fa-eraser" style="color: #ffffff;"></i></button>
+            <button class="btn btn-primary" id="fill"><i class="fa-solid fa-fill" style="color: #ffffff;"></i></button>
+            <button id="rectangle-tool"><i class="fas fa-square"></i></button>
+            <button id="circle-tool"><i class="fas fa-circle"></i></button>
+            <button id="zoom-in"><i class="fas fa-circle-plus" style="color: #ffffff;"></i></button>
+            <button id="zoom-out"><i class="fas fa-circle-minus" style="color: #ffffff;"></i></button>
+            <button class="btn btn-primary" id="undo"><i class="fa-solid fa-undo" style="color: #ffffff;"></i></button>
+            <button class="btn btn-primary" id="redo"><i class="fa-solid fa-redo" style="color: #ffffff;"></i></button>
+            <button class="btn btn-primary" id="save"><i class="fa-solid fa-save" style="color: #ffffff;"></i></button>
+            <button class="btn btn-primary" id="clear"><i class="fa-solid fa-rotate" style="color: #ffffff;"></i></button>
+            <input type="file" id="upload" accept="image/*">
+            <i id="upload-icon" class="fas fa-upload"></i>
+            <button class="btn btn-primary" id="help"><i class="fa-solid fa-question-circle" style="color: #ffffff;"></i></button>
+        </div>
+        <canvas id="canvas" width="1200" height="760"></canvas>
+    </div>
+    <div id="overlay" style="display: none;"></div>
+    <div id="save-dialog" style="display: none;">
+        <form id="save-form">
+            <label for="format">Choose format:</label>
+            <select id="format">
+                <option value="png">PNG</option>
+                <option value="jpeg">JPEG</option>
+                <option value="svg">SVG</option>
+                <option value="pdf">PDF</option>
+            </select>
+            <button type="submit">Save</button>
+            <button type="button" id="cancel-button">Cancel</button>
+        </form>
+    </div>
+    <div id="help-dialog" class="modal" tabindex="-1" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">User Instructions</h5>
+                    <button type="button" class="btn-close" id="close-help"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to the Drawing App!</p>
+                    <ul>
+                        <li>Use the <strong>size</strong> input to change the brush size.</li>
+                        <li>Select a color using the <strong>color picker</strong>.</li>
+                        <li>Use the <strong>erase</strong> button to switch to eraser mode.</li>
+                        <li>Use the <strong>fill</strong> button to fill areas with the selected color.</li>
+                        <li>Draw rectangles and circles using the respective tools.</li>
+                        <li>Zoom in and out with the zoom buttons.</li>
+                        <li>Undo and redo actions using the respective buttons.</li>
+                        <li>Save your drawing in various formats using the save button.</li>
+                        <li>Clear the canvas with the clear button.</li>
+                        <li>Upload an image using the upload input.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="close-help-footer">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
